@@ -31,6 +31,9 @@
   <!-- Notyf -->
   {{-- <link type="text/css" href="{{ asset('dist/vendor/notyf/notyf.min.css') }}" rel="stylesheet" /> --}}
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.datatables.net/2.3.8/css/dataTables.dataTables.css" />
   <!-- Volt CSS -->
   <link type="text/css" href="{{ asset('dist/css/volt.css') }}" rel="stylesheet" />
   @stack('after-style')
@@ -75,10 +78,14 @@
   {{-- <script src="{{ asset('dist/vendor/vanillajs-datepicker/dist/js/datepicker.min.js') }}"></script> --}}
   <!-- Simplebar -->
   <script src="{{ asset('dist/vendor/simplebar/dist/simplebar.min.js') }}"></script>
+
   <!-- Github buttons -->
   {{-- <script async defer="defer" src="https://buttons.github.io/buttons.js"></script> --}}
   <!-- Volt JS -->
   <script src="{{ asset('dist/assets/js/volt.js') }}"></script>
+  <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+  <script src="https://cdn.datatables.net/2.3.8/js/dataTables.js"></script>
+
   @stack('after-script')
 </body>
 

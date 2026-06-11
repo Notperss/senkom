@@ -5,9 +5,28 @@
   <!-- Toast with Placements -->
   <script>
     @foreach ($errors->all() as $error)
-      Toastify({
-        text: `<div style="position: relative;">
+      const toast = Toastify({
+        text: `<div style="position: relative;padding-right: 24px;"">
                 <span>{{ $error }}</span>
+                 <!-- Tombol close di sisi kanan -->
+                    <button
+                        type="button"
+                        onclick="toast.hideToast()"
+                        style="
+                            position: absolute;
+                            top: 0;
+                            right: 0;
+                            background: transparent;
+                            border: none;
+                            color: white;
+                            font-size: 18px;
+                            font-weight: bold;
+                            cursor: pointer;
+                            line-height: 1;
+                            padding: 0;
+                        ">
+                        &times;
+                    </button>
                 </div>
               <div class="toast-progress"></div>
             `,
@@ -22,9 +41,28 @@
 
     // Handle session error message
     @if (session()->has('error'))
-      Toastify({
-        text: `<div style="position: relative;">
+      const toast = Toastify({
+        text: `<div style="position: relative; padding-right: 24px;"">
                 <span>{{ session('error') }}</span>
+                 <!-- Tombol close di sisi kanan -->
+                    <button
+                        type="button"
+                        onclick="toast.hideToast()"
+                        style="
+                            position: absolute;
+                            top: 0;
+                            right: 0;
+                            background: transparent;
+                            border: none;
+                            color: white;
+                            font-size: 18px;
+                            font-weight: bold;
+                            cursor: pointer;
+                            line-height: 1;
+                            padding: 0;
+                        ">
+                        &times;
+                    </button>
                 </div>
               <div class="toast-progress"></div>
             `,
@@ -39,21 +77,46 @@
   </script>
 @endif
 
+
 @if (session()->has('success'))
   <script>
-    Toastify({
-      text: `<div style="position: relative;">
-              <span>{{ session('success') }}</span>
-              </div>
-            <div class="toast-progress"></div>
+    const toast = Toastify({
+      text: `
+                <div style="position: relative; padding-right: 24px;">
+                    <span>{{ session('success') }}</span>
+
+                    <!-- Tombol close di sisi kanan -->
+                    <button
+                        type="button"
+                        onclick="toast.hideToast()"
+                        style="
+                            position: absolute;
+                            top: 0;
+                            right: 0;
+                            background: transparent;
+                            border: none;
+                            color: white;
+                            font-size: 18px;
+                            font-weight: bold;
+                            cursor: pointer;
+                            line-height: 1;
+                            padding: 0;
+                        ">
+                        &times;
+                    </button>
+                </div>
+
+                <div class="toast-progress"></div>
             `,
-      duration: 7000, // Duration of the toast
-      close: false, // Option to close the toast manually
-      gravity: "top", // Toast appears at the top
-      position: "right", // Align toast to the right
-      backgroundColor: "linear-gradient(to right, #00b09b, #00c853)",
-      escapeMarkup: false,
-    }).showToast();
+      duration: 7000,
+      close: false, // Tombol close custom digunakan
+      gravity: "top",
+      position: "right",
+      backgroundColor: "#00c853",
+      escapeMarkup: false
+    });
+
+    toast.showToast();
   </script>
 @endif
 

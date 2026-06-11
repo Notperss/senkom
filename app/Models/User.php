@@ -9,13 +9,25 @@ use Illuminate\Database\Eloquent\Attributes\Hidden;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Spatie\Activitylog\LogOptions;
+use Spatie\Activitylog\Traits\LogsActivity;
+use Spatie\Permission\Traits\HasRoles;
 
-#[Fillable(['name', 'email', 'password'])]
+#[Fillable(['name',
+    'username',
+    'company_id',
+    'division_id',
+    'profile_photo_path',
+    'email', 'password',
+    'is_logged_in',
+    'last_activity'])]
+
 #[Hidden(['password', 'remember_token'])]
+
 class User extends Authenticatable
 {
     /** @use HasFactory<UserFactory> */
-    use HasFactory, Notifiable;
+    use HasFactory, Notifiable, HasRoles, LogsActivity;
 
     /**
      * Get the attributes that should be cast.
@@ -29,4 +41,16 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function getActivitylogOptions(): LogOptions
+    {
+        return LogOptions::defaults()
+            ->logOnly(['company_id', 'division_id', 'name', 'username', 'email', 'is_active', 'profile_photo_path'])
+            ->useLogName('User')
+            ->setDescriptionForEvent(fn (string $eventName) => "User has been {$eventName}")
+            ->logOnlyDirty()
+            ->dontSubmitEmptyLogs()
+        ;
+    }
+
 }
