@@ -13,8 +13,9 @@
         "laravel/fortify": "1.36",
         "laravel/framework": "^13.0",
         "laravel/tinker": "^3.0",
-        "spatie/laravel-activitylog": "^4.12",
-        "spatie/laravel-permission": "^7.4"
+        "spatie/laravel-activitylog": "^5.0",
+        "spatie/laravel-permission": "^7.4",
+        "yajra/laravel-datatables": "^13"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",
